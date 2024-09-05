@@ -1,5 +1,5 @@
 name: Production
-run-name: ${{ github.repository }} - Production - $(date +%Y-%m-%d):${{ github.run_number }}
+run-name: ${{ github.repository }} - Production - :${{ github.run_number }}
 
 on:
     [push]
@@ -11,7 +11,7 @@ env:
     THEME_DIR: 'wp-content/themes/demo-theme'
 defaults:
     run:
-        working-directory: ./wp-content/themes/demo-theme
+        working-directory: wp-content/themes/demo-theme
 
 jobs:
     BuildAssets:
