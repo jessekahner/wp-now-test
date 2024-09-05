@@ -24,7 +24,7 @@ jobs:
 
             - uses: actions/setup-node@v4
               with:
-                  node-version: 'latest'
+                  node-version: latest
                   cache: 'npm'
                   cache-dependency-path: ${{ env.THEME_DIR }}/package-lock.json
             - run: npm ci

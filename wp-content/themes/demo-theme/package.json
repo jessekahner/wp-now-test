@@ -1,0 +1,26 @@
+{
+	"name": "demo-theme",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"private": true,
+	"devDependencies": {
+		"@wordpress/scripts": "^29.0.0",
+		"classnames": "^2.3.2",
+		"copy-webpack-plugin": "^11.0.0"
+	},
+	"dependencies": {
+		"@wordpress/icons": "^10.7.0",
+		"glob": "^10.2.2",
+		"postcss-loader": "^7.2.4"
+	},
+	"scripts": {
+		"clean": "rm -rf build/",
+		"start": "npm run clean; wp-scripts start --output-path=build/",
+		"build": "npm run clean; wp-scripts build --output-path=build/",
+		"packages-update": "wp-scripts packages-update"
+	}
+}

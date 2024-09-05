@@ -1,6 +1,14 @@
 # Wordpress - ignore core, configuration, examples, uploads and logs.
 # https://github.com/github/gitignore/blob/main/WordPress.gitignore
 
+*~
+.DS_Store
+.svn
+.cvs
+*.bak
+*.swp
+Thumbs.db
+
 # Core
 #
 # Note: if you want to stage/commit WP core files
@@ -46,3 +54,17 @@ wp-config.php
 # Note: If you wish to whitelist themes,
 # uncomment the next line
 #/wp-content/themes
+
+# Site specific
+.htaccess
+*.cache
+.cache/*
+*.bak
+*.swp
+Thumbs.db
+**/.sass-cache
+**/.cache
+node_modules/
+*.log
+wp-content/debug.log
+local-xdebuginfo.php
