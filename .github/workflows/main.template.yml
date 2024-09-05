@@ -1,0 +1,15 @@
+name: Production
+run-name: ${{ github.repository }} - Production - ${{ github.run_number }}
+
+on:
+    [push]
+    # push:
+    #     branches:
+    #         - main
+
+jobs:
+    Explore-GitHub-Actions:
+        name: 'bye'
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
