@@ -1,5 +1,5 @@
 name: Production
-run-name: ${{ github.repository }} - Production - :${{ github.run_number }}
+run-name: ${{ github.repository }} - Production - ${{ github.run_number }}
 
 on:
     [push]
@@ -11,26 +11,27 @@ env:
     THEME_DIR: 'wp-content/themes/demo-theme'
 defaults:
     run:
-        working-directory: wp-content/themes/demo-theme
+        working-directory: ./wp-content/themes/demo-theme
 
 jobs:
     BuildAssets:
         name: Build + Deploy Assets
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
+            - uses: ./jobs/build.template.yml
+            # - uses: actions/checkout@v4
+            #   with:
+            #       fetch-depth: 0
 
             - uses: actions/setup-node@v4
               with:
-                  node-version: latest
+                  node-version: 'latest'
                   cache: 'npm'
                   cache-dependency-path: ${{ env.THEME_DIR }}/package-lock.json
-            - run: npm ci
-              name: npm install
+            # - run: npm ci
+            #   name: npm install
 
-            - run: npm run build
-              name: npm build
+            # - run: npm run build
+            #   name: npm build
 
             - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
