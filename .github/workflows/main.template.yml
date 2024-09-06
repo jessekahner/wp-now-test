@@ -18,10 +18,6 @@ jobs:
         name: Build + Deploy Assets
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
-
             - uses: ./.github/workflows/build/
 
             - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
