@@ -18,8 +18,8 @@ env:
 jobs:
     build:
         name: Build + Deploy Assets
-        if: always()
-        needs: call-BackupSite
+        # if: always()
+        # needs: call-BackupSite
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
@@ -27,7 +27,4 @@ jobs:
                   fetch-depth: 0
             - run: echo ${{ inputs.THEME_DIR }} '---';
 
-            - run: echo ${{ inputs.dependencies }}
-            - run: echo ${{env.dependencies}}
-            - run: echo $dependencies
             - run: ls -la

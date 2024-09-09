@@ -18,9 +18,9 @@ jobs:
         uses: ./.github/workflows/backup.template.yml
     call-BuildAssets:
         uses: ./.github/workflows/build.template.yml
+        needs: call-BackupSite
         with:
             THEME_DIR: 'wp-content/themes/demo-theme'
-            dependencies: call-BackupSite
     # BuildAssets:
     #     name: Build + Deploy Assets
     #     runs-on: ubuntu-latest
@@ -45,5 +45,5 @@ jobs:
 
     # - run: npm run build
     #   name: npm build
-
-    # - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+    # steps:
+    #     - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
