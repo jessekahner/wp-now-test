@@ -16,6 +16,8 @@ defaults:
 jobs:
     call-BackupSite:
         uses: ./.github/workflows/backup.template.yml
+        name: Create backup point
+
     call-BuildAssets:
         uses: ./.github/workflows/build.template.yml
         needs: call-BackupSite
