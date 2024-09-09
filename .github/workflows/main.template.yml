@@ -14,25 +14,36 @@ defaults:
         working-directory: ./wp-content/themes/demo-theme
 
 jobs:
-    BuildAssets:
-        name: Build + Deploy Assets
-        runs-on: ubuntu-latest
-        steps:
-            # - uses: actions/checkout@v4
-            #   with:
-            #       fetch-depth: 0
+    # call-backSite:
+    #     uses: ./.github/workflows/backup.template.yml
+    call-buildAssets:
+        uses: ./.github/workflows/build.template.yml
+        with:
+            THEME_DIR: 'wp-content/themes/demo-theme'
+            dependencies: BackupSite
+    # BuildAssets:
+    #     name: Build + Deploy Assets
+    #     runs-on: ubuntu-latest
+    #     needs: [call-buildAssets]
+    #     steps:
+    #         - uses: actions/checkout@v4
+    #           id: first_checkout
+    #           with:
+    #               fetch-depth: 0
 
-            - uses: ./.github/workflows/build.template.yml
+    # - uses: ./.github/build
+    #   with:
+    #       dependencies: 'ssss'
 
-            # - uses: actions/setup-node@v4
-            #   with:
-            #       node-version: 'latest'
-            #       cache: 'npm'
-            #       cache-dependency-path: ${{ env.THEME_DIR }}/package-lock.json
-            # - run: npm ci
-            #   name: npm install
+    # - uses: actions/setup-node@v4
+    #   with:
+    #       node-version: 'latest'
+    #       cache: 'npm'
+    #       cache-dependency-path: ${{ env.THEME_DIR }}/package-lock.json
+    # - run: npm ci
+    #   name: npm install
 
-            # - run: npm run build
-            #   name: npm build
+    # - run: npm run build
+    #   name: npm build
 
-            - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+    # - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
