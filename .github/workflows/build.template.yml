@@ -8,8 +8,8 @@ on:
                 type: string
                 required: false
 
-# env:
-#     dependencies: ${{ inputs.dependencies }}
+env:
+    dependencies: ${{ inputs.dependencies }}
 # defaults:
 #     run:
 #         working-directory: ./wp-content/themes/demo-theme
@@ -24,8 +24,9 @@ jobs:
             - uses: actions/checkout@v4
               with:
                   fetch-depth: 0
-            # - run: echo ${{ inputs.THEME_DIR }} '---';
+            - run: echo ${{ inputs.THEME_DIR }} '---';
 
-            # - run: echo ${{ inputs.dependencies }}
-            # - run: echo ${{env.dependencies}}
+            - run: echo ${{ inputs.dependencies }}
+            - run: echo ${{env.dependencies}}
+            - run: echo $dependencies
             - run: ls -la
