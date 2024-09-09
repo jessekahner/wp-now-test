@@ -1,0 +1,20 @@
+on:
+    workflow_call:
+
+jobs:
+    job:
+        name: Create PR to develop from hotfix or bugfix
+        runs-on: ubuntu-latest
+        if: |
+            (
+              ( startsWith(${{github.ref}}, 'refs/heads/hotfix/') || startsWith(${{github.ref}}, 'refs/heads/bugfix/') )
+              && startsWith(${{github.ref}}, 'refs/pull/')
+            )
+        steps:
+            - run: |
+                  echo 'yeah!'
+                  echo ${{github.ref}}
+                  echo ${{github.base_ref}}
+                  echo ${{github.head_ref}}
+              env:
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
