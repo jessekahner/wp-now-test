@@ -18,7 +18,7 @@ jobs:
     build:
         name: Build + Deploy Assets
         if: always()
-        needs: ${{ inputs.dependencies }}
+        # needs: ${{ inputs.dependencies }}
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
