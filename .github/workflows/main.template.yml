@@ -23,3 +23,7 @@ jobs:
         needs: call-BackupSite
         with:
             THEME_DIR: './wp-content/themes/demo-theme'
+
+    call-DeployHost:
+        uses: ./.github/workflows/deploy.template.yml
+        needs: call-BuildAssets
