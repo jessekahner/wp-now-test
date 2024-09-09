@@ -6,10 +6,10 @@ jobs:
         name: Create PR to develop from hotfix or bugfix
         runs-on: ubuntu-latest
         if: |
-            (
+            ${{(
               ( startsWith(${{github.head_ref}}, 'refs/heads/hotfixs/') || startsWith(${{github.head_ref}}, 'refs/heads/bugfixs/') )
               && startsWith(${{github.ref}}, 'refs/pull/')
-            )
+            )}}
         steps:
             - run: |
                   echo 'yeah!'
