@@ -1,0 +1,36 @@
+on:
+    workflow_call:
+        inputs:
+            THEME_DIR:
+                type: string
+                required: false
+
+env:
+    THEME_DIR: ${{ inputs.THEME_DIR }}
+defaults:
+    run:
+        working-directory: ./wp-content/themes/demo-theme
+
+jobs:
+    build:
+        name: Build + Deploy Assets
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 'latest'
+                  cache: 'npm'
+                  cache-dependency-path: ${{ env.THEME_DIR }}/package-lock.json
+
+            - run: npm ci
+              name: npm install
+
+            - run: npm run build
+              name: npm build
+
+            - run: echo "rsync to server"
+              name: Transfer to host
