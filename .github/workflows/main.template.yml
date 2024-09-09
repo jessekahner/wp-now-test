@@ -16,7 +16,8 @@ defaults:
 jobs:
     # call-backSite:
     #     uses: ./.github/workflows/backup.template.yml
-    call-buildAssets:
+    BuildAssets:
+        name: Build + Deploy Assets
         uses: ./.github/workflows/build.template.yml
         with:
             THEME_DIR: 'wp-content/themes/demo-theme'
