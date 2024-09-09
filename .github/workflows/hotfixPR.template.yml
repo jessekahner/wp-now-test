@@ -7,7 +7,7 @@ jobs:
         runs-on: ubuntu-latest
         if: |
             (
-              ( startsWith(${{github.ref}}, 'refs/heads/hotfix/') || startsWith(${{github.ref}}, 'refs/heads/bugfix/') )
+              ( startsWith(${{github.head_ref}}, 'refs/heads/hotfixs/') || startsWith(${{github.head_ref}}, 'refs/heads/bugfixs/') )
               && startsWith(${{github.ref}}, 'refs/pull/')
             )
         steps:

@@ -1,5 +1,5 @@
 name: Hotfix PR
-# run-name: ${{ github.repository }} - Production - ${{ github.run_id }}
+run-name: ${{ github.repository }} - Hotfix PR - ${{ github.run_id }}
 
 on:
     # [push]
