@@ -1,32 +1,27 @@
 name: Production
-run-name: ${{ github.repository }} - Production - $(date +'%Y%m%d'):${{ github.run_id }}
+run-name: ${{ github.repository }} - Production - ${{ github.run_id }}
 
 on:
-    [push]
-    # push:
-    #     branches:
-    #         - main
+    push:
+        branches:
+            - main
 
 env:
     THEME_DIR: './wp-content/themes/demo-theme'
-# defaults:
-#     run:
-#         working-directory: ./wp-content/themes/demo-theme
+defaults:
+    run:
+        working-directory: ./wp-content/themes/demo-theme
 
 jobs:
-    chose:
-        runs-on: ubuntu-latest
-        steps:
-            - run: echo $(date +'%Y%m%d')
-    # call-BackupSite:
-    #     uses: ./.github/workflows/backup.template.yml
+    call-BackupSite:
+        uses: ./.github/workflows/backup.template.yml
 
-    # call-BuildAssets:
-    #     uses: ./.github/workflows/build.template.yml
-    #     needs: call-BackupSite
-    #     with:
-    #         THEME_DIR: './wp-content/themes/demo-theme'
+    call-BuildAssets:
+        uses: ./.github/workflows/build.template.yml
+        needs: call-BackupSite
+        with:
+            THEME_DIR: './wp-content/themes/demo-theme'
 
-    # call-DeployHost:
-    #     uses: ./.github/workflows/deploy.template.yml
-    #     needs: call-BuildAssets
+    call-DeployHost:
+        uses: ./.github/workflows/deploy.template.yml
+        needs: call-BuildAssets
