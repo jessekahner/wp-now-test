@@ -4,6 +4,7 @@ on:
             dependencies:
                 type: string
                 required: false
+                default: ''
             THEME_DIR:
                 type: string
                 required: false
