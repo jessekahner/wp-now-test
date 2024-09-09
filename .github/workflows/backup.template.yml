@@ -3,7 +3,7 @@ on:
 
 jobs:
     BackupSite:
+        name: Create backup point
         runs-on: ubuntu-latest
         steps:
             - run: echo 'Step to backup before deploying.'
-            - run: sleep 20

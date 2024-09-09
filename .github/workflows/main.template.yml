@@ -14,13 +14,12 @@ defaults:
         working-directory: ./wp-content/themes/demo-theme
 
 jobs:
-    call-BackupSite:
+    BackupSite:
         uses: ./.github/workflows/backup.template.yml
-        name: Create backup point
 
     call-BuildAssets:
         uses: ./.github/workflows/build.template.yml
-        needs: call-BackupSite
+        needs: [BackupSite]
         with:
             THEME_DIR: 'wp-content/themes/demo-theme'
     # BuildAssets:
