@@ -14,10 +14,9 @@ defaults:
         working-directory: ./wp-content/themes/demo-theme
 
 jobs:
-    # call-backSite:
-    #     uses: ./.github/workflows/backup.template.yml
-    BuildAssets:
-        name: Build + Deploy Assets
+    call-BackupSite:
+        uses: ./.github/workflows/backup.template.yml
+    call-BuildAssets:
         uses: ./.github/workflows/build.template.yml
         with:
             THEME_DIR: 'wp-content/themes/demo-theme'

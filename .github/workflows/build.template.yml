@@ -17,9 +17,9 @@ env:
 
 jobs:
     build:
-        # name: Build + Deploy Assets
+        name: Build + Deploy Assets
         if: always()
-        # needs: ''
+        needs: 'BackupSite'
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
