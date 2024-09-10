@@ -9,8 +9,11 @@ jobs:
         steps:
             - run: |
                   echo 'yeah!'
-                  echo ${{github.ref}}
+                  pr_source=${{github.ref}}
                   echo ${{github.base_ref}}
                   echo ${{github.head_ref}}
+
+                  echo ${pr_source#'refs/pull/'}
+                  echo ${{github.event.number}}
               env:
                   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
