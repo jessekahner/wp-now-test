@@ -5,15 +5,24 @@ jobs:
     job:
         name: Create PR to develop from hotfix or bugfix
         runs-on: ubuntu-latest
-        if: ${{ ( (startsWith(github.head_ref, 'hotfix/') || startsWith(github.head_ref, 'bugfix/')) && startsWith(github.ref, 'refs/pull/') ) }}
+        if: ${{ ( (startsWith(github.head_ref, 'hotfix/') || startsWith(github.head_ref, 'bugfix/')) && startsWith(github.ref, 'refs/pull/') || true) }}
         steps:
             - run: |
                   echo 'yeah!'
-                  pr_source=${{github.ref}}
-                  echo ${{github.base_ref}}
-                  echo ${{github.head_ref}}
+                  # echo ${{github.ref}}
+                  # echo ${{github.base_ref}}
+                  # echo ${{github.head_ref}}
 
-                  echo ${pr_source#'refs/pull/'}
-                  echo ${{github.event.number}}
+
+                  # echo ${{github.event.number}}
+
+                  pr_info=$(gh pr view ${{github.event.number}} --json title,body)
+                  echo $pr_info
+
+                  pr_title = jq -r '.title' <<< "$pr_info"
+                  echo $pr_title
+
+                  pr_description = jq -r '.body' <<< "$pr_info"
+                  echo $pr_description
               env:
                   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
