@@ -8,8 +8,8 @@ jobs:
         if: ${{ ( (startsWith(github.head_ref, 'hotfix/') || startsWith(github.head_ref, 'bugfix/')) && startsWith(github.ref, 'refs/pull/') || true) }}
         steps:
             - uses: actions/checkout@v4
-              # with:
-              # fetch-depth: 0
+              with:
+                  fetch-depth: 0
             - run: |
                   # echo ${{github.ref}}
                   # echo ${{github.base_ref}}
