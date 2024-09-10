@@ -23,7 +23,8 @@ jobs:
                   pr_title=$(jq -r '.title' <<< "$pr_info")
                   pr_description=$(jq -r '.body' <<< "$pr_info")
 
-                  msg="**[HOTFIX] - $pr_title**\n\n$pr_description"
+                  msg="**[HOTFIX] - $pr_title**
+                  $pr_description"
 
                   output=$(gh pr create --base develop --head ${{github.head_ref}} --title "Merge ${{github.head_ref}} to develop" --body "$msg")
 
