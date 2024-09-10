@@ -22,10 +22,10 @@ jobs:
                   pr_info=$(gh pr view ${{github.event.number}} --json title,body)
                   echo $pr_info
 
-                  pr_title = jq -r '.title' <<< "$pr_info"
+                  pr_title=$(jq -r '.title' <<< "$pr_info")
                   echo $pr_title
 
-                  pr_description = jq -r '.body' <<< "$pr_info"
+                  pr_description=$(jq -r '.body' <<< "$pr_info")
                   echo $pr_description
               env:
                   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
