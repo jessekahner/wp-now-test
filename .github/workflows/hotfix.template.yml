@@ -2,7 +2,7 @@ name: Hotfix PR
 run-name: ${{ github.repository }} - Hotfix PR - ${{ github.run_id }}
 
 on:
-    pull_request_target:
+    pull_request:
         # types:
         # - opened
         branches:
