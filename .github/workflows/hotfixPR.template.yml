@@ -25,7 +25,7 @@ jobs:
 
                   msg="**[HOTFIX] - $pr_title**\n\n$pr_description"
 
-                  output=$(gh pr create --base develop --head ${{github.head_ref}} --title "Merge ${{github.head_ref}} to develop" --body "**[HOTFIX] - $pr_title**")
+                  output=$(gh pr create --base develop --head ${{github.head_ref}} --title "Merge ${{github.head_ref}} to develop" --body "$msg")
 
               name: Create PR to develop from hotfix or bugfix
               env:
