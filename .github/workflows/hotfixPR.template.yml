@@ -6,6 +6,7 @@ jobs:
         name: Create PR to develop from hotfix or bugfix
         runs-on: ubuntu-latest
         if: ${{ ( (startsWith(github.head_ref, 'hotfix/') || startsWith(github.head_ref, 'bugfix/')) && startsWith(github.ref, 'refs/pull/') || true) }}
+
         steps:
             - uses: actions/checkout@v4
               with:
@@ -22,7 +23,7 @@ jobs:
                   pr_title=$(jq -r '.title' <<< "$pr_info")
                   pr_description=$(jq -r '.body' <<< "$pr_info")
 
-                  $(gh pr create --base develop --head ${{github.head_ref}} --title "Merge ${{github.head_ref}} to develop" --body "**[HOTFIX] - $pr_title**\n\n$pr_description")
+                  gh pr create --base develop --head ${{github.head_ref}} --title "Merge ${{github.head_ref}} to develop" --body "**[HOTFIX] - pr_title** pr_description"
 
               name: Create PR to develop from hotfix or bugfix
               env:
