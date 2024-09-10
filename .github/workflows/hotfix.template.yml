@@ -8,6 +8,8 @@ on:
         branches:
             - main
 
+permissions: write-all
+
 env:
     THEME_DIR: './wp-content/themes/demo-theme'
 defaults:

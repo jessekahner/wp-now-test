@@ -1,8 +1,6 @@
 on:
     workflow_call:
 
-permissions: write-all
-
 jobs:
     job:
         name: Create PR to develop from hotfix or bugfix
