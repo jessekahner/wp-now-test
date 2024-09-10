@@ -8,24 +8,22 @@ jobs:
         if: ${{ ( (startsWith(github.head_ref, 'hotfix/') || startsWith(github.head_ref, 'bugfix/')) && startsWith(github.ref, 'refs/pull/') || true) }}
         steps:
             - uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
+              # with:
+              # fetch-depth: 0
             - run: |
-                  echo 'yeah!'
                   # echo ${{github.ref}}
                   # echo ${{github.base_ref}}
                   # echo ${{github.head_ref}}
 
-
                   # echo ${{github.event.number}}
 
                   pr_info=$(gh pr view ${{github.event.number}} --json title,body)
-                  echo $pr_info
 
                   pr_title=$(jq -r '.title' <<< "$pr_info")
-                  echo $pr_title
-
                   pr_description=$(jq -r '.body' <<< "$pr_info")
-                  echo $pr_description
+
+                  gh pr create --base develop --title "Merge `${{github.head_ref}}` to develop" --body "**[HOTFIX] - $pr_title**\n\n$pr_description"
+
+              name: Create PR to develop from hotfix or bugfix
               env:
                   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
