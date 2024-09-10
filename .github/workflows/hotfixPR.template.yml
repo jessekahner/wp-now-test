@@ -7,6 +7,9 @@ jobs:
         runs-on: ubuntu-latest
         if: ${{ ( (startsWith(github.head_ref, 'hotfix/') || startsWith(github.head_ref, 'bugfix/')) && startsWith(github.ref, 'refs/pull/') || true) }}
         steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
             - run: |
                   echo 'yeah!'
                   # echo ${{github.ref}}
