@@ -1,15 +1,13 @@
 on:
     workflow_call:
 
-permissions:
-    pull-request: write
-
 jobs:
     job:
         name: Create PR to develop from hotfix or bugfix
         runs-on: ubuntu-latest
         if: ${{ ( (startsWith(github.head_ref, 'hotfix/') || startsWith(github.head_ref, 'bugfix/')) && startsWith(github.ref, 'refs/pull/') || true) }}
-
+        permissions:
+            pull-requests: write
         steps:
             - uses: actions/checkout@v4
               with:
