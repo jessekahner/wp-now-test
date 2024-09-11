@@ -1,5 +1,5 @@
-name: Merge `production` to `staging`
-run-name: ${{ github.repository }} - Merge `production` to `staging` - ${{ github.run_id }}
+name: Merge `main` to `staging`
+run-name: ${{ github.repository }} - Merge `main` to `staging` - ${{ github.run_id }}
 
 on:
     [push]
