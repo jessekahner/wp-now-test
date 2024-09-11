@@ -12,6 +12,10 @@ jobs:
               with:
                   fetch-depth: 0
 
+            - run: |
+                  $(gh pr create --base staging --head main --title "(automated) Merge main to staging" --body "This is an automated PR to update staging environment.")
+
+                  echo ${{github.events.pull_request.number}}
               name: Create & merge PR from `production` to `staging`
               env:
                   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
