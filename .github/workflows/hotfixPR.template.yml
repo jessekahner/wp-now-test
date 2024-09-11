@@ -12,12 +12,6 @@ jobs:
               with:
                   fetch-depth: 0
             - run: |
-                  # echo ${{github.ref}}
-                  # echo ${{github.base_ref}}
-                  # echo ${{github.head_ref}}
-
-                  # echo ${{github.event.number}}
-
                   pr_info=$(gh pr view ${{github.event.number}} --json title,body)
 
                   pr_title=$(jq -r '.title' <<< "$pr_info")
