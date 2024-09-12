@@ -1,0 +1,21 @@
+on:
+    workflow_call:
+
+jobs:
+    job:
+        name: Create & merge PR from `main` to `staging`
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - run: |
+                  output=$(gh pr create --base staging --head main --title "(automated) Merge main to staging" --body "This is an automated PR to update staging environment." --fill-verbose)
+
+                  $(gh pr merge --auto --delete-branch --squash $output)
+
+              name: Create & merge PR from `main` to `staging`
+              env:
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
