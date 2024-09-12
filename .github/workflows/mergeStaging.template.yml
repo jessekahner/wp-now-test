@@ -2,15 +2,11 @@ name: Merge `main` to `staging`
 run-name: ${{ github.repository }} - Merge `main` to `staging` - ${{ github.run_id }}
 
 on:
-    [push]
-    # workflow_run:
-    #     workflows: ['Production']
-    #     types: [completed]
-    #     branches:
-    #         - 'main'
-# push:
-#     branches:
-#         - main
+    workflow_run:
+        workflows: ['Production']
+        types: [completed]
+        branches:
+            - 'main'
 
 permissions: write-all
 
