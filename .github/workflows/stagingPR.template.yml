@@ -3,15 +3,19 @@ on:
 
 jobs:
     job:
-        name: Create & merge PR from `production` to `staging`
+        name: Create & merge PR from `main` to `staging`
         runs-on: ubuntu-latest
-        # if: ${{ ( (startsWith(github.head_ref, 'hotfix/') || startsWith(github.head_ref, 'bugfix/')) && startsWith(github.ref, 'refs/pull/') || true) }}
 
         steps:
             - uses: actions/checkout@v4
               with:
                   fetch-depth: 0
 
-              name: Create & merge PR from `production` to `staging`
+            - run: |
+                  output=$(gh pr create --base staging --head main --title "(automated) Merge main to staging" --body "This is an automated PR to update staging environment." --fill-verbose)
+
+                  $(gh pr merge --auto --delete-branch --squash $output)
+
+              name: Create & merge PR from `main` to `staging`
               env:
                   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
