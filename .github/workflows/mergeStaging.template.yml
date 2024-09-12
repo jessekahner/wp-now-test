@@ -1,0 +1,19 @@
+name: Merge `production` to `staging`
+run-name: ${{ github.repository }} - Merge `production` to `staging` - ${{ github.run_id }}
+
+on:
+    # [push]
+    workflow_run:
+        workflows: ['Production']
+        types: [completed]
+        branches:
+            - 'main'
+# push:
+#     branches:
+#         - main
+
+permissions: write-all
+
+jobs:
+    call-StagingPR:
+        uses: ./.github/workflows/stagingPR.template.yml

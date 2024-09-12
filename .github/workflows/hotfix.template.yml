@@ -1,0 +1,21 @@
+name: Hotfix PR
+run-name: ${{ github.repository }} - Hotfix PR - ${{ github.run_id }}
+
+on:
+    pull_request:
+        types:
+            - opened
+        branches:
+            - main
+
+permissions: write-all
+
+env:
+    THEME_DIR: './wp-content/themes/demo-theme'
+defaults:
+    run:
+        working-directory: ./wp-content/themes/demo-theme
+
+jobs:
+    call-HotfixPR:
+        uses: ./.github/workflows/hotfixPR.template.yml

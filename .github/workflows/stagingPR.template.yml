@@ -1,0 +1,17 @@
+on:
+    workflow_call:
+
+jobs:
+    job:
+        name: Create & merge PR from `production` to `staging`
+        runs-on: ubuntu-latest
+        # if: ${{ ( (startsWith(github.head_ref, 'hotfix/') || startsWith(github.head_ref, 'bugfix/')) && startsWith(github.ref, 'refs/pull/') || true) }}
+
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+              name: Create & merge PR from `production` to `staging`
+              env:
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
