@@ -15,7 +15,7 @@ jobs:
             - run: |
                   output=$(gh pr create --base staging --head main --title "(automated) Merge main to staging" --body "This is an automated PR to update staging environment.")
 
-                  echo $output
+                  echo "$output"
 
               name: Create & merge PR from `main` to `staging`
               env:
