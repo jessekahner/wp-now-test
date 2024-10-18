@@ -12,4 +12,4 @@ permissions: write-all
 
 jobs:
     call-StagingPR:
-        uses: ./.github/workflows/stagingPR.template.yml
+        uses: jessekahner/shared-actions/.github/workflows/stagingPR.template.yml@main
