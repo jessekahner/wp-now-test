@@ -18,4 +18,4 @@ defaults:
 
 jobs:
     call-HotfixPR:
-        uses: ./.github/workflows/hotfixPR.template.yml
+        uses: jessekahner/shared-actions/.github/workflows/hotfixPR.template.yml@main
