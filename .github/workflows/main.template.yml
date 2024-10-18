@@ -17,11 +17,11 @@ jobs:
         uses: jessekahner/shared-actions/.github/workflows/backup.template.yml@main
 
     call-BuildAssets:
-        uses: jessekahner/shared-actions/.github/workflows/build.template.yml@main
+        uses: /.github/workflows/build.template.yml
         needs: call-BackupSite
         with:
             THEME_DIR: './wp-content/themes/demo-theme'
 
     call-DeployHost:
-        uses: ./.github/workflows/deploy.template.yml
+        uses: jessekahner/shared-actions/.github/workflows/deploy.template.yml@main
         needs: call-BuildAssets
