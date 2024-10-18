@@ -14,7 +14,7 @@ defaults:
 
 jobs:
     call-BackupSite:
-        uses: ./.github/workflows/backup.template.yml
+        uses: jessekahner/shared-actions/.github/workflows/backup.template.yml@main
 
     call-BuildAssets:
         uses: ./.github/workflows/build.template.yml
@@ -23,5 +23,5 @@ jobs:
             THEME_DIR: './wp-content/themes/demo-theme'
 
     call-DeployHost:
-        uses: ./.github/workflows/deploy.template.yml
+        uses: jessekahner/shared-actions/.github/workflows/deploy.template.yml@main
         needs: call-BuildAssets
